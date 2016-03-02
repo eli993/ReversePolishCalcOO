@@ -74,10 +74,8 @@ public class Calc02 {
             } //CHIUDE WHILE
         } // CHIUDE IF
         
-        else{
+        else
             System.out.println("Errore.");
-        }
-    
     }
     
     public static Stack createStack(int n){
@@ -88,8 +86,7 @@ public class Calc02 {
         p.s[p.num] = el;
         p.num++;
     }
-    
-
+   
     public static int pop(Stack p){
         p.num--;
         return p.s[p.num];
@@ -139,20 +136,18 @@ public class Calc02 {
             //Se c è un carattere, riempi lo stack di supporto
             if ( Character.isDigit(c) )
                 push(h, Character.getNumericValue(c));
-                        
-            /*  
-                Quando faccio la stampa, ho bisogno di almento un elemento nell'array.
-                La stampa è distruttiva, quindi ho un elemento in meno nello stack.
-            */
+
             else if(c=='.'){
-                if(h.num<0)
-                    return false;
-                h.num--;
+               //Quando faccio la stampa, ho bisogno di almeno un elemento nell'array.
+               if(h.num<0)
+                  return false;
+               //La stampa è distruttiva, quindi ho un elemento in meno nello stack.
+               h.num--;
             }
                 
             /*  
                 Quando c'è un operatore binario, nello stack devono esserci almeno 2 numeri. 
-                Inoltre, dopo l'uso dell'operatore, ho un elemento in meno nello stack.
+                Inoltre ho un elemento in meno nello stack.
             */
             else if (c=='+' || c=='-' ||  c=='*' ||c=='/' || c== '%' || c=='$'){             
                 h.num--;
